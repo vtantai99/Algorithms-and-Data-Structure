@@ -40,7 +40,7 @@ const ERROR_MESSAGE = {
 	EMPTY: "Linked list is empty.",
 };
 
-class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
+export class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 	head: DoublyNode<T> | null = null;
 	tail: DoublyNode<T> | null = null;
 	private _size = 0;
@@ -85,14 +85,14 @@ class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 		this._size++;
 	}
 
-	pickFirst(): typeof this.head {
+	pickFirst(): T | undefined {
 		if (this.isEmpty()) throw new Error(ERROR_MESSAGE.EMPTY);
-		return this.head;
+		return this.head?.getData() ?? undefined;
 	}
 
-	pickLast(): typeof this.tail {
+	pickLast(): T | undefined {
 		if (this.isEmpty()) throw new Error(ERROR_MESSAGE.EMPTY);
-		return this.tail;
+		return this.tail?.getData() ?? undefined;
 	}
 
 	removeFirst(): void {
@@ -204,16 +204,3 @@ class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 		}
 	}
 }
-
-const doublyLinkedList = new DefaultDoublyLinkedList();
-const objectA = {};
-
-doublyLinkedList.addFirst(2);
-doublyLinkedList.addFirst(3);
-doublyLinkedList.addFirst(objectA);
-doublyLinkedList.addLast(4);
-console.log(
-	doublyLinkedList.indexOf(objectA),
-	doublyLinkedList.includes(objectA),
-);
-console.log(doublyLinkedList.print());

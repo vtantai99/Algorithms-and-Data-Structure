@@ -15,8 +15,8 @@ export interface DoublyLinkedList<T> {
 	createNode(data: T): DoublyNode<T>;
 	addFirst(data: T): void;
 	addLast(data: T): void;
-	pickFirst(): DoublyNode<T> | null;
-	pickLast(): DoublyNode<T> | null;
+	pickFirst(): T | undefined;
+	pickLast(): T | undefined;
 	removeFirst(): void;
 	removeLast(): void;
 	indexOf(object: unknown): number;

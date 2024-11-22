@@ -1,6 +1,6 @@
 import type { DynamicArray } from "./type";
 
-class DefaultDynamicArray<T> implements DynamicArray<T> {
+export class DefaultDynamicArray<T> implements DynamicArray<T> {
 	private data: T[];
 	private capacity: number;
 	private length: number;
