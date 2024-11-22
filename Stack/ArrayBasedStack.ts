@@ -16,10 +16,11 @@ export class ArrayBasedStack<T> implements StackADT<T> {
 		this.index++;
 	}
 
-	pop(): void {
+	pop(): T | undefined {
 		if (this.isEmpty()) throw new Error("Stack is empty!");
-		this.array.remove();
+		const item = this.array.remove();
 		this.index--;
+		return item;
 	}
 
 	peek(): T | undefined {
@@ -39,4 +40,3 @@ export class ArrayBasedStack<T> implements StackADT<T> {
 		return this.array.toString();
 	}
 }
-

@@ -117,7 +117,7 @@ export class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 		this._size--;
 	}
 
-	removeLast() {
+	removeLast(): T | undefined {
 		if (this.isEmpty()) throw new Error(ERROR_MESSAGE.EMPTY);
 
 		// biome-ignore lint/style/noNonNullAssertion: <explanation>
@@ -136,6 +136,7 @@ export class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 		tailNode.setPrev(null);
 
 		this._size--;
+		return tailNode.getData() || undefined;
 	}
 
 	indexOf(object: unknown): number {

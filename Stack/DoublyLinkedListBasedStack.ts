@@ -18,10 +18,11 @@ export class DoublyLinkedListBasedStack<T> implements StackADT<T> {
 		this.doublyLinkedList.addLast(element);
 	}
 
-	pop(): void {
+	pop(): T | undefined {
 		if (this.isEmpty()) throw new Error("Stack is empty!");
 
-		this.doublyLinkedList.removeLast();
+		const item = this.doublyLinkedList.removeLast();
+		return item;
 	}
 
 	peek(): T | undefined {
