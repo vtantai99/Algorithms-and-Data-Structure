@@ -1,6 +1,10 @@
-export interface SinglyNode<T> {
-	getData(): T | null;
-	setData(data: T | null): void;
-	getNext(): SinglyNode<T> | null;
-	setNext(node: SinglyNode<T> | null): void;
+export interface SinglyLinkedListADT<T> {
+	prepend(element: T): void;
+	append(element: T): void;
+	pop(): T | undefined;
+	popFirst(): T | undefined;
+	pickHead(): T | undefined;
+	pickTail(): T | undefined;
+	removeNode(element: T): T | undefined;
+	print(): string;
 }
