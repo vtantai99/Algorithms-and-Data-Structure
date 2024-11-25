@@ -85,9 +85,9 @@ export class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 		this._size++;
 	}
 
-	pickFirst(): T | undefined {
+	pickFirst(): T {
 		if (this.isEmpty()) throw new Error(ERROR_MESSAGE.EMPTY);
-		return this.head?.getData() ?? undefined;
+		return this.head?.getData() as T;
 	}
 
 	pickLast(): T | undefined {
@@ -95,11 +95,12 @@ export class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 		return this.tail?.getData() ?? undefined;
 	}
 
-	removeFirst(): void {
+	removeFirst(): T {
 		if (this.isEmpty()) throw new Error(ERROR_MESSAGE.EMPTY);
 
 		// biome-ignore lint/style/noNonNullAssertion: <explanation>
 		const headNode = this.head!;
+		const removedData = headNode.getData()
 
 		if (headNode.getNext()) {
 			this.head = headNode.getNext();
@@ -115,6 +116,8 @@ export class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 		headNode.setData(null);
 
 		this._size--;
+
+		return removedData as T
 	}
 
 	removeLast(): T | undefined {
